@@ -22,6 +22,16 @@ out in the config string).  _For instance, it is permissible to discover a PCI
 root port using the config string, then use PCI enumeration to discover devices
 with additional MMIO resources._
 
+_The specification is agnostic about the nature and existence of privileged
+modes above S-mode.  Platform resources can be implemented in software or
+hardware; this may or may not correspond to whether they are exposed as ECALL
+or MMIO.  Other privileged modes such as an omniscient debug mode can exist with
+no effect whatsoever on the platform interface._
+
+_The purpose of this specification is to maximize the probability of successful
+interoperation of independently created plaforms and system software.  It places
+a particular emphasis on virtualization guest use cases._
+
 A Standard Platform provides a **platform memory map** and a **platform software
 interface**.  The platform memory map contains one or more memory resources and
 zero or more memory mapped I/O (MMIO) resources.  The platform software
@@ -79,12 +89,6 @@ _Dubious, discuss: Relative to priv-1.9.1 this proposal places more weight on
 the config string and strongly discourages probing.  This is friendlier to
 nonstandard extensions and matches modern industry practice, but may be
 controvertial and is open to discussion._
-
-_The specification is agnostic about the nature and existence of privileged
-mdoes above S-mode.  Platform resources can be implemented in software or
-hardware; this may or may not correspond to whether they are exposed as ECALL
-or MMIO.  Other privileged modes such as an omniscient debug mode can exist with
-no effect whatsoever on the platform interface._
 
 ## The config string
 
